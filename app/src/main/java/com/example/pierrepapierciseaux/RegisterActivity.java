@@ -1,6 +1,8 @@
 package com.example.pierrepapierciseaux;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -47,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
 
+    private Button retour;
+
     /*Métier*/
     int year;
     int month;
@@ -71,6 +75,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBarRegister);
 
+        retour = findViewById(R.id.backButtonRegister);
+
     }
 
     @Override
@@ -81,6 +87,10 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         getUIElements();
+
+        retour.setOnClickListener(e->{
+            startActivity(new Intent(this, LoginActivity.class));
+        });
 
         selectDate.setOnClickListener(e -> {
 
@@ -109,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity {
         String dateNaissTexte = date.getText().toString().trim();
         String emailTexte = mail.getText().toString().trim();
         String passwordTexte = password.getText().toString().trim();
-        String confirmPasswordTexte = password.getText().toString().trim();
+        String confirmPasswordTexte = confirmPassword.getText().toString().trim();
 
         String sexeTexte = "";
 
@@ -136,7 +146,9 @@ public class RegisterActivity extends AppCompatActivity {
             } else if (!passwordTexte.equals(confirmPasswordTexte)) {
                 showToast(R.string.mismatch_password);
             } else {
-                progressBar.setVisibility(View.VISIBLE);
+                //progressBar.setVisibility(View.VISIBLE);
+                ProgressDialog dialog = ProgressDialog.show(this, "",
+                        getString(R.string.please_wait), true);
                 String finalSexeTexte = sexeTexte;
                 mAuth.createUserWithEmailAndPassword(emailTexte, passwordTexte).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -150,12 +162,21 @@ public class RegisterActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
                                         showToast(R.string.ajout_user_reussi);
-                                        progressBar.setVisibility(View.GONE);
+                                        //progressBar.setVisibility(View.GONE);
+                                        dialog.dismiss();
+                                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                     }else{
                                         showToast(R.string.ajout_user_fail);
+                                        //progressBar.setVisibility(View.GONE);
+                                        dialog.dismiss();
                                     }
                                 }
                             });
+                        }else{
+                            showToast(R.string.ajout_user_fail);
+                            //progressBar.setVisibility(View.GONE);
+                            dialog.dismiss();
+
                         }
 
                     }
