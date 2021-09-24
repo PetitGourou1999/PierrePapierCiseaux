@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">PierrePapierCiseaux</string>
+
+    <string name="menuClassique">Classique</string>
+    <string name="menu4">Puissance 4</string>
+    <string name="menu7">Puissance 7</string>
+
+    <string name="menuClassement">Classement</string>
+    <string name="menuRegles">Règles</string>
+    <string name="menuDeco">Déconnexion</string>
+
+    <string name="titleGameClassique">Mode Classique</string>
+    <string name="titleGame4">Mode Puissance 4</string>
+    <string name="titleGame7">Mode Puissance 7</string>
+
+    <string name="titleRules">Règles du jeu</string>
+    <string name="titleScoreboard">Classement</string>
+
+
 </resources>
