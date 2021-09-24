@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "690702142321",
+    "project_id": "pierrepapierciseaux-bda67",
+    "storage_bucket": "pierrepapierciseaux-bda67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690702142321:android:f50d0b809b4858c7f804d0",
+        "android_client_info": {
+          "package_name": "com.example.pierrepapierciseaux"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690702142321-4kvqnnmmf06e5jajno0oq8i7vsaeuo8u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDH06eB2VBIGkgZGvHooeptwBt-Z8Y2X-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690702142321-4kvqnnmmf06e5jajno0oq8i7vsaeuo8u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

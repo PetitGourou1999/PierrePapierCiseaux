@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">PierrePapierCiseaux</string>
+    <string name="connexion">Connexion</string>
+    <string name="bienvenue">Bienvenue</string>
+    <string name="inscription">Inscription</string>
+    <string name="sexe">Sexe</string>
+    <string name="homme">Homme</string>
+    <string name="femme">Femme</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom">Nom</string>
+    <string name="date_naissance">Date de naissance</string>
+    <string name="select_date">Sélectionner une date : </string>
+    <string name="email">Email</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="confirm_mot_de_passe">Confirmation du mot de passe</string>
+    <string name="champ_non_renseigné">L\'un des champs n\'a pas été renseigné.</string>
+    <string name="email_pas_valide">Le mail n\'est pas valide</string>
+    <string name="mismatch_password">Les mots de passe saisis ne correspondent pas</string>
+    <string name="ajout_user_reussi">Votre inscription a été réalisée avec succès</string>
+    <string name="ajout_user_fail">Une erreur est survenue, veuillez réessayer</string>
 </resources>
