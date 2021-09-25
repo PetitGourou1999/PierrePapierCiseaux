@@ -7,13 +7,15 @@ public class Utilisateur {
     private String dateNaiss;
     private String sexe;
     private String mail;
+    private int score;
 
-    public Utilisateur(String nom, String prenom, String dateNaiss, String sexe, String mail) {
+    public Utilisateur(String nom, String prenom, String dateNaiss, String sexe, String mail, int score) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaiss = dateNaiss;
         this.sexe = sexe;
         this.mail = mail;
+        this.score = score;
     }
 
     public String getNom() {
@@ -55,4 +57,13 @@ public class Utilisateur {
     public void setMail(String mail) {
         this.mail = mail;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
 }

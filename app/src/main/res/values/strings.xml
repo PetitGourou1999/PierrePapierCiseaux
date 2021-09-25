@@ -20,7 +20,8 @@
     <string name="please_wait">Traitement en cours... Veuillez patienter</string>
     <string name="ajout_user_reussi">Votre inscription a été réalisée avec succès</string>
     <string name="ajout_user_fail">Une erreur est survenue, veuillez réessayer</string>
-
+    <string name="login_user_reussi">Connexion réussie !</string>
+    <string name="login_user_fail">La connexion a échoué. Veuillez vérifier vos identifiants.</string>
 
     <string name="menuClassique">Classique</string>
     <string name="menu4">Puissance 4</string>

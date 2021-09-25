@@ -46,6 +46,9 @@
             android:name=".ActivityScoreboard"
             android:exported="true"
             android:parentActivityName=".ActivityMainMenu"/>
+        <activity
+            android:name=".ActivityMainMenu"
+            android:exported="true" />
     </application>
 
 </manifest>
