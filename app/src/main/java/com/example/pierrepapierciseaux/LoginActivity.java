@@ -2,6 +2,7 @@ package com.example.pierrepapierciseaux;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
@@ -118,7 +119,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (myUser != null) {
                     Intent newIntent = new Intent(LoginActivity.this, ActivityMainMenu.class);
-                    newIntent.putExtra("user", myUser);
+                    SharedPreferences prefs = getApplicationContext ().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("userName", (myUser.getPrenom() + " " + myUser.getNom()));
+                    editor.putString("userID", userID);
+                    editor.putInt("userScore", myUser.getScore());
+                    editor.commit();
                     startActivity(newIntent);
                 }
             }

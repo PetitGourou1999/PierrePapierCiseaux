@@ -56,14 +56,14 @@ public class Element {
         return Objects.hash(name);
     }
 
-    public EnumResults checkWeakness(Element otherElement){
+    public EnumResults checkWeakness(Element otherElement) {
 
-        if(otherElement.equals(this)){
+        if (otherElement.equals(this)) {
             return EnumResults.TIE;
-        }else if(this.weaknesses.contains(otherElement)){
+        } else if (this.weaknesses.contains(otherElement)) {
             return EnumResults.DEFEAT;
-        }else{
-            return  EnumResults.VICTORY;
+        } else {
+            return EnumResults.VICTORY;
         }
     }
 

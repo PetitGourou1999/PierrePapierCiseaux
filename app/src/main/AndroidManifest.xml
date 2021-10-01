@@ -38,6 +38,18 @@
             android:exported="true"
             android:parentActivityName=".ActivityMainMenu"/>
         <activity
+            android:name=".ActivityGameClassicButtons"
+            android:exported="true"
+            android:parentActivityName=".ActivityMainMenu"/>
+        <activity
+            android:name=".ActivityGameVariant4Buttons"
+            android:exported="true"
+            android:parentActivityName=".ActivityMainMenu"/>
+        <activity
+            android:name=".ActivityGameVariant7Buttons"
+            android:exported="true"
+            android:parentActivityName=".ActivityMainMenu"/>
+        <activity
             android:name=".ActivityRules"
             android:exported="true"
             android:parentActivityName=".ActivityMainMenu"/>
