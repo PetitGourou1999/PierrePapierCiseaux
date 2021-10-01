@@ -10,22 +10,114 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
     <TextView
-        android:id="@+id/titleClassicGame"
+        android:id="@+id/titleRules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titleGameClassique"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/texteScoreClassic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/guideline6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <ImageView
+        android:id="@+id/classicButtonCiseaux"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/ciseaux"
+        app:layout_constraintBottom_toTopOf="@+id/guideline11"
+        app:layout_constraintEnd_toStartOf="@+id/guideline14"
+        app:layout_constraintStart_toStartOf="@+id/guideline13"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <ImageButton
+        android:id="@+id/classicButtonFeuille"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/feuille"
+        app:layout_constraintBottom_toTopOf="@+id/guideline17"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toStartOf="@+id/guideline15"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+
+    <ImageButton
+        android:id="@+id/classicButtonPierre"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/pierre"
+        app:layout_constraintBottom_toTopOf="@+id/guideline17"
+        app:layout_constraintEnd_toStartOf="@+id/guideline16"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline14"
+        app:layout_constraintTop_toTopOf="@+id/guideline11"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 </androidx.constraintlayout.widget.ConstraintLayout>

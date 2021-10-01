@@ -1,9 +1,11 @@
 <resources>
-    <string name="app_name">PierrePapierCiseaux</string>
-    <string name="retour">Retour</string>
+    <string name="app_name">Pierre Papier Ciseaux</string>
+
     <string name="connexion">Connexion</string>
     <string name="bienvenue">Bienvenue</string>
+
     <string name="inscription">Inscription</string>
+
     <string name="sexe">Sexe</string>
     <string name="homme">Homme</string>
     <string name="femme">Femme</string>
@@ -14,6 +16,7 @@
     <string name="email">Email</string>
     <string name="mot_de_passe">Mot de passe</string>
     <string name="confirm_mot_de_passe">Confirmation du mot de passe</string>
+
     <string name="champ_non_renseigné">L\'un des champs n\'a pas été renseigné.</string>
     <string name="email_pas_valide">Le mail n\'est pas valide</string>
     <string name="mismatch_password">Les mots de passe saisis ne correspondent pas</string>
@@ -35,7 +38,39 @@
     <string name="titleGame4">Mode Puissance 4</string>
     <string name="titleGame7">Mode Puissance 7</string>
 
-    <string name="titleRules">Règles du jeu</string>
+    <string name="titleRules">Règles du jeu : général</string>
+    <string name="titleRulesScore">Règles du jeu : score</string>
+    <string name="titleRulesClassique">Règles du jeu : Mode Classique</string>
+    <string name="titleRules4">Règles du jeu : Mode Puissance 4</string>
+    <string name="titleRules7">Règles du jeu : Mode Puissance 7</string>
     <string name="titleScoreboard">Classement</string>
+
+    <string name="retour">Retour</string>
+    <string name="precedent">Précédent</string>
+    <string name="suivant">Suivant</string>
+    <string name="termine">Terminé</string>
+
+    <string name="rules1">Une partie se joue en maximum 5 manches.</string>
+    <string name="rules2">A chaque manche de la partie, vous pouvez choisir un élément
+        contre l\'élément choisi par l\'intelligence artificielle</string>
+    <string name="rules3">La partie est gagnée lorsque l\'un des joueurs remporte 3 manches</string>
+    <string name="rules4">La manche nulle n\'est pas comptabilisée</string>
+    <string name="rulesScore1">Votre score évolue en fonction de vos
+        victoires et défaites dans les différents niveaux du jeu</string>
+    <string name="rulesScore2">Pour le jeu classique (niveau 1) : une victoire vous fait gagner
+        3 points et une défaite vous fait perdre 1 point.</string>
+    <string name="rulesScore3">Pour la puissance 4 (niveau 2) : une victoire vous fait gagner
+        5 points et une défaite vous fait perdre 2 points.</string>
+    <string name="rulesScore4">Pour puissance 7 (niveau 3) : une victoire vous fait gagner
+        8 points et une défaite vous fait perdre 3 points.</string>
+    <string name="rulesScore5">N.B. Le score minimal est de 0.</string>
+
+    <string name="pierre">Pierre</string>
+    <string name="feuille">Feuille</string>
+    <string name="ciseaux">Ciseaux</string>
+    <string name="feu">Feu</string>
+    <string name="eau">Eau</string>
+    <string name="air">Air</string>
+    <string name="eponge">Eponge</string>
 
 </resources>

@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textViewRules5"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRules4" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
@@ -12,13 +23,119 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
     <TextView
-        android:id="@+id/titleClassicGame"
+        android:id="@+id/titleRules"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/titleRules"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPrecedentRules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/precedent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSuivantRules"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <Button
+        android:id="@+id/buttonSuivantRules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suivant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/buttonPrecedentRules"
+        app:layout_constraintTop_toTopOf="@+id/guideline12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <TextView
+        android:id="@+id/textViewRules1"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:text="@string/rules1"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRules2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+
+    <TextView
+        android:id="@+id/textViewRules2"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:text="@string/rules2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRules3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRules1" />
+
+    <TextView
+        android:id="@+id/textViewRules3"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:text="@string/rules3"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewRules"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRules2" />
+
+    <TextView
+        android:id="@+id/textViewRules4"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:text="@string/rules4"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRules5"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRules" />
+
+    <ImageView
+        android:id="@+id/imageViewRules"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/textViewRules4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline18"
+        app:layout_constraintTop_toBottomOf="@+id/textViewRules3"
+        app:srcCompat="@drawable/calendar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

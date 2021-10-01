@@ -1,10 +1,48 @@
 package com.example.pierrepapierciseaux;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ActivityRules extends AppCompatActivity {
+
+    /*UI*/
+    private TextView title;
+
+    private TextView txtRules1;
+    private TextView txtRules2;
+    private TextView txtRules3;
+    private TextView txtRules4;
+    private TextView txtRules5;
+
+    private ImageView imageViewRules;
+
+    private Button precedentButton;
+    private Button suivantButton;
+
+    /*Métier*/
+    private int stepCounter = 1;
+
+    /**
+     * Récupération des UI
+     */
+    private void getElements() {
+        title = findViewById(R.id.titleRules);
+        txtRules1 = findViewById(R.id.textViewRules1);
+        txtRules2 = findViewById(R.id.textViewRules2);
+        txtRules3 = findViewById(R.id.textViewRules3);
+        txtRules4 = findViewById(R.id.textViewRules4);
+        txtRules5 = findViewById(R.id.textViewRules5);
+
+        imageViewRules = findViewById(R.id.imageViewRules);
+
+        precedentButton = findViewById(R.id.buttonPrecedentRules);
+        suivantButton = findViewById(R.id.buttonSuivantRules);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -12,5 +50,97 @@ public class ActivityRules extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_rules);
 
+        getElements();
+
+        displayStep();
+
+        precedentButton.setOnClickListener(e -> {
+            if (stepCounter >= 1)
+                stepCounter--;
+            displayStep();
+        });
+
+        suivantButton.setOnClickListener(e -> {
+            if (stepCounter <= 5)
+                stepCounter++;
+            displayStep();
+        });
+
+    }
+
+    /**
+     * Affichage des éléments qui correspondent à la bonne étape de lecture des règles
+     */
+    private void displayStep() {
+        switch (stepCounter) {
+            case 1: //Affichage règles générales
+                precedentButton.setEnabled(false);
+                displayTexts(true);
+                txtRules1.setText(R.string.rules1);
+                txtRules2.setText(R.string.rules2);
+                txtRules3.setText(R.string.rules3);
+                txtRules4.setText(R.string.rules4);
+                txtRules5.setText("");
+                title.setText(R.string.titleRules);
+                break;
+            case 2: //Affichage règles du score
+                precedentButton.setEnabled(true);
+                suivantButton.setText(R.string.suivant);
+                displayTexts(true);
+                txtRules1.setText(R.string.rulesScore1);
+                txtRules2.setText(R.string.rulesScore2);
+                txtRules3.setText(R.string.rulesScore3);
+                txtRules4.setText(R.string.rulesScore4);
+                txtRules5.setText(R.string.rulesScore5);
+                title.setText(R.string.titleRulesScore);
+                break;
+            case 3: //Affichage règles jeu à 3
+                precedentButton.setEnabled(true);
+                title.setText(R.string.titleRulesClassique);
+                suivantButton.setText(R.string.suivant);
+                displayTexts(false);
+                //TODO : afficher image règles à 3
+                break;
+            case 4: //Affichage règles jeu à 4
+                precedentButton.setEnabled(true);
+                title.setText(R.string.titleRules4);
+                suivantButton.setText(R.string.suivant);
+                displayTexts(false);
+                //TODO : afficher image règles à 4
+                break;
+            case 5: //Affichage règles jeu à 7
+                precedentButton.setEnabled(true);
+                title.setText(R.string.titleRules7);
+                displayTexts(false);
+                //TODO : afficher image règles à 7
+                suivantButton.setText(R.string.termine);
+                break;
+            case 6:
+                //TODO : rediriger vers la vue de laquelle on vient
+                break;
+        }
+    }
+
+    /**
+     * Affichage ou non des TextView
+     *
+     * @param visible booléen qui spécifie si on doit afficher ou non les textes
+     */
+    private void displayTexts(boolean visible) {
+        if (visible) {
+            txtRules1.setVisibility(View.VISIBLE);
+            txtRules2.setVisibility(View.VISIBLE);
+            txtRules3.setVisibility(View.VISIBLE);
+            txtRules4.setVisibility(View.VISIBLE);
+            txtRules5.setVisibility(View.VISIBLE);
+            imageViewRules.setVisibility(View.GONE);
+        } else {
+            txtRules1.setVisibility(View.GONE);
+            txtRules2.setVisibility(View.GONE);
+            txtRules3.setVisibility(View.GONE);
+            txtRules4.setVisibility(View.GONE);
+            txtRules5.setVisibility(View.GONE);
+            imageViewRules.setVisibility(View.VISIBLE);
+        }
     }
 }
