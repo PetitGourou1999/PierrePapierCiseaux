@@ -68,9 +68,19 @@
     <string name="pierre">Pierre</string>
     <string name="feuille">Feuille</string>
     <string name="ciseaux">Ciseaux</string>
+    <string name="puits">Puits</string>
     <string name="feu">Feu</string>
     <string name="eau">Eau</string>
     <string name="air">Air</string>
-    <string name="eponge">Eponge</string>
+    <string name="eponge">Éponge</string>
+
+    <string name="resultTie">Égalité</string>
+    <string name="resultVictory">Victoire !</string>
+    <string name="resultDefeat">Défaite !</string>
+    <string name="resultRound">Résultat de la manche :</string>
+
+    <string name="botScore">Ordinateur : </string>
+    <string name="humanScore">Joueur : </string>
+
 
 </resources>

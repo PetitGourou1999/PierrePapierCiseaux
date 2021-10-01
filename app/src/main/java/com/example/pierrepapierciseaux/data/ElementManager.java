@@ -1,47 +1,96 @@
 package com.example.pierrepapierciseaux.data;
 
+import android.content.Context;
 import android.content.res.Resources;
 
 import com.example.pierrepapierciseaux.R;
+
+import java.time.format.ResolverStyle;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class ElementManager {
 
     public Element pierre;
     public Element feuille;
     public Element ciseaux;
+    public Element puits;
     public Element feu;
     public Element eau;
     public Element eponge;
     public Element air;
 
-    public ElementManager() {
-        initElements();
+    public ArrayList<Element> classicList;
+    public ArrayList<Element> variant4List;
+    public ArrayList<Element> variant7List;
+
+    public ElementManager(Context context) {
+        initElements(context);
+        initList();
     }
 
-    public void initElements() {
-        pierre = new Element(Resources.getSystem().getString(R.string.pierre));
-        feuille = new Element(Resources.getSystem().getString(R.string.feuille));
-        ciseaux = new Element(Resources.getSystem().getString(R.string.ciseaux));
-        feu = new Element(Resources.getSystem().getString(R.string.feu));
-        eau = new Element(Resources.getSystem().getString(R.string.eau));
-        eponge = new Element(Resources.getSystem().getString(R.string.eponge));
-        air = new Element(Resources.getSystem().getString(R.string.air));
+    private void initList(){
+        classicList = new ArrayList<Element>();
+        variant4List = new ArrayList<Element>();
+        variant7List = new ArrayList<Element>();
 
-        pierre.setStrengths(feu, ciseaux, eponge);
-        feuille.setStrengths(air, eau, pierre);
-        ciseaux.setStrengths(eponge, feuille, air);
-        feu.setStrengths(ciseaux, eponge, feuille);
-        eau.setStrengths(pierre, feu, ciseaux);
-        eponge.setStrengths(feuille, air, eau);
-        air.setStrengths(eau, pierre, feu);
+        classicList.add(pierre);
+        classicList.add(feuille);
+        classicList.add(ciseaux);
 
-        pierre.setWeaknesses(eau, air, feuille);
+        variant4List.add(pierre);
+        variant4List.add(feuille);
+        variant4List.add(ciseaux);
+        variant4List.add(puits);
+
+        variant7List.add(pierre);
+        variant7List.add(feuille);
+        variant7List.add(ciseaux);
+        variant7List.add(feu);
+        variant7List.add(eau);
+        variant7List.add(air);
+        variant7List.add(eponge);
+    }
+
+    private void initElements(Context context) {
+        pierre = new Element(context.getString(R.string.pierre), R.drawable.pierre);
+        feuille = new Element(context.getString(R.string.feuille),R.drawable.feuille);
+        ciseaux = new Element(context.getString(R.string.ciseaux),R.drawable.ciseaux);
+        puits = new Element(context.getString(R.string.puits),R.drawable.puits);
+        feu = new Element(context.getString(R.string.feu),R.drawable.feu);
+        eau = new Element(context.getString(R.string.eau),R.drawable.eau);
+        eponge = new Element(context.getString(R.string.eponge),R.drawable.eponge);
+        air = new Element(context.getString(R.string.air),R.drawable.air);
+
+        pierre.setWeaknesses(eau, air, feuille,puits);
         feuille.setWeaknesses(feu, ciseaux, eponge);
-        ciseaux.setWeaknesses(feu, pierre, eau);
+        ciseaux.setWeaknesses(feu, pierre, eau, puits);
+        puits.setWeaknesses(feuille);
         feu.setWeaknesses(eau, air, pierre);
         eau.setWeaknesses(air, feuille, eponge);
         eponge.setWeaknesses(ciseaux, feu, pierre);
         air.setWeaknesses(feuille, eponge, ciseaux);
 
     }
+
+    private Element getRandomElement(ArrayList<Element> elements){
+
+        Random rand = new Random();
+        Element randomElement = elements.get(rand.nextInt(elements.size()));
+        return randomElement;
+    }
+
+    public Element getRandomElementClassic(){
+        return getRandomElement(this.classicList);
+    }
+
+    public Element getRandomElementVariant4(){
+        return getRandomElement(this.variant4List);
+    }
+
+    public Element getRandomElementVariant7(){
+        return getRandomElement(this.variant7List);
+    }
+
+
 }

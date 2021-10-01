@@ -1,16 +1,18 @@
 package com.example.pierrepapierciseaux.data;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.Objects;
 
 public class Element {
 
     private String name;
     private ArrayList<Element> weaknesses;
-    private ArrayList<Element> strengths;
+    private int imageId;
 
-    public Element(String name) {
+    public Element(String name, int imageId) {
         this.name = name;
+        this.imageId = imageId;
     }
 
     public String getName() {
@@ -32,16 +34,6 @@ public class Element {
         }
     }
 
-    public ArrayList<Element> getStrengths() {
-        return strengths;
-    }
-
-    public void setStrengths(Element... strengths) {
-        this.strengths = new ArrayList<Element>();
-        for (int i = 0; i < strengths.length; i++) {
-            this.strengths.add(strengths[i]);
-        }
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -51,8 +43,28 @@ public class Element {
         return name.equals(element.name);
     }
 
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    public EnumResults checkWeakness(Element otherElement){
+
+        if(otherElement.equals(this)){
+            return EnumResults.TIE;
+        }else if(this.weaknesses.contains(otherElement)){
+            return EnumResults.DEFEAT;
+        }else{
+            return  EnumResults.VICTORY;
+        }
+    }
+
 }

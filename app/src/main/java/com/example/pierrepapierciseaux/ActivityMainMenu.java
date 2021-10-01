@@ -57,10 +57,10 @@ public class ActivityMainMenu extends AppCompatActivity {
 
         });
 
-        /*buttonDeco.setOnClickListener(e -> {
-            Intent intentDeco = new Intent(this, ActivityScoreboard.class);
-            startActivity(intentScoreboard);
+        buttonDeco.setOnClickListener(e -> {
+            Intent intentDeco = new Intent(this, LoginActivity.class);
+            startActivity(intentDeco);
 
-        });*/
+        });
     }
 }
