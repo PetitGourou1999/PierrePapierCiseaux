@@ -5,8 +5,10 @@ import android.content.res.Resources;
 
 import com.example.pierrepapierciseaux.R;
 
+import java.sql.Array;
 import java.time.format.ResolverStyle;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class ElementManager {
@@ -30,26 +32,9 @@ public class ElementManager {
     }
 
     private void initList(){
-        classicList = new ArrayList<Element>();
-        variant4List = new ArrayList<Element>();
-        variant7List = new ArrayList<Element>();
-
-        classicList.add(pierre);
-        classicList.add(feuille);
-        classicList.add(ciseaux);
-
-        variant4List.add(pierre);
-        variant4List.add(feuille);
-        variant4List.add(ciseaux);
-        variant4List.add(puits);
-
-        variant7List.add(pierre);
-        variant7List.add(feuille);
-        variant7List.add(ciseaux);
-        variant7List.add(feu);
-        variant7List.add(eau);
-        variant7List.add(air);
-        variant7List.add(eponge);
+        classicList = new ArrayList<Element>(Arrays.asList(pierre, feuille, ciseaux));
+        variant4List = new ArrayList<Element>(Arrays.asList(pierre, feuille, ciseaux, puits));
+        variant7List = new ArrayList<Element>(Arrays.asList(pierre, feuille, ciseaux, feu, eau, air, eponge));
     }
 
     private void initElements(Context context) {

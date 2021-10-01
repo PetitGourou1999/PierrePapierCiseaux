@@ -1,8 +1,5 @@
 package com.example.pierrepapierciseaux;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +8,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pierrepapierciseaux.data.Utilisateur;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,11 +31,14 @@ public class LoginActivity extends AppCompatActivity {
 
     /*Métier*/
     private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
+    private DatabaseReference databaseReference;
+    private String userID;
 
     /**
      * Récupération des éléments de l'UI
      */
-    private void getUIElements(){
+    private void getUIElements() {
         editTextEmail = findViewById(R.id.loginMail);
         editTextPassword = findViewById(R.id.loginPassword);
 
@@ -45,11 +55,11 @@ public class LoginActivity extends AppCompatActivity {
 
         getUIElements();
 
-        register.setOnClickListener(e->{
+        register.setOnClickListener(e -> {
             startActivity(new Intent(this, RegisterActivity.class));
         });
 
-        login.setOnClickListener(e ->{
+        login.setOnClickListener(e -> {
             singIn();
         });
     }
@@ -57,16 +67,16 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * Méthode de connexion
      */
-    private void singIn(){
+    private void singIn() {
         String emailTexte = editTextEmail.getText().toString().trim();
         String passwordTexte = editTextPassword.getText().toString().trim();
 
-        if(emailTexte.isEmpty() || passwordTexte.isEmpty()){
+        if (emailTexte.isEmpty() || passwordTexte.isEmpty()) {
             showToast(R.string.champ_non_renseigné);
-        }else {
+        } else {
             if (!Patterns.EMAIL_ADDRESS.matcher(emailTexte).matches()) {
                 showToast(R.string.email_pas_valide);
-            }else{
+            } else {
                 singInFirebase(emailTexte, passwordTexte);
             }
         }
@@ -75,7 +85,8 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * Méthode de connexion Firebase
-     * @param emailTexte le mail
+     *
+     * @param emailTexte    le mail
      * @param passwordTexte le mot de passe
      */
     private void singInFirebase(String emailTexte, String passwordTexte) {
@@ -84,15 +95,37 @@ public class LoginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(emailTexte, passwordTexte).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    showToast(R.string.login_user_reussi);
+                if (task.isSuccessful()) {
                     dialog.dismiss();
-                    //TODO : passer les informations du profil utilisateur à l'activité
-                    startActivity(new Intent(LoginActivity.this, ActivityMainMenu.class));
-                }else{
+                    singInAndRedirect();
+                } else {
                     showToast(R.string.login_user_fail);
                     dialog.dismiss();
                 }
+            }
+        });
+    }
+
+    private void singInAndRedirect() {
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+        userID = firebaseUser.getUid();
+
+        databaseReference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Utilisateur myUser = snapshot.getValue(Utilisateur.class);
+
+                if (myUser != null) {
+                    Intent newIntent = new Intent(LoginActivity.this, ActivityMainMenu.class);
+                    newIntent.putExtra("user", myUser);
+                    startActivity(newIntent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                showToast(R.string.login_user_fail);
             }
         });
     }

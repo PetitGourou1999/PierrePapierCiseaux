@@ -1,6 +1,8 @@
 package com.example.pierrepapierciseaux.data;
 
-public class Utilisateur {
+import java.io.Serializable;
+
+public class Utilisateur implements Serializable, Comparable<Utilisateur> {
 
     private String nom;
     private String prenom;
@@ -8,6 +10,10 @@ public class Utilisateur {
     private String sexe;
     private String mail;
     private int score;
+
+    public Utilisateur() {
+
+    }
 
     public Utilisateur(String nom, String prenom, String dateNaiss, String sexe, String mail, int score) {
         this.nom = nom;
@@ -66,4 +72,8 @@ public class Utilisateur {
         this.score = score;
     }
 
+    @Override
+    public int compareTo(Utilisateur utilisateur) {
+        return this.score - utilisateur.getScore();
+    }
 }

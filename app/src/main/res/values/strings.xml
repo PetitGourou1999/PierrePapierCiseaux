@@ -34,6 +34,7 @@
     <string name="menuRegles">Règles</string>
     <string name="menuDeco">Déconnexion</string>
 
+    <string name="titleMenu">Menu Principal</string>
     <string name="titleGameClassique">Mode Classique</string>
     <string name="titleGame4">Mode Puissance 4</string>
     <string name="titleGame7">Mode Puissance 7</string>
@@ -79,6 +80,7 @@
     <string name="resultDefeat">Défaite !</string>
     <string name="resultRound">Résultat de la manche :</string>
 
+    <string name="generalScore">Score total : </string>
     <string name="botScore">Ordinateur : </string>
     <string name="humanScore">Joueur : </string>
 
