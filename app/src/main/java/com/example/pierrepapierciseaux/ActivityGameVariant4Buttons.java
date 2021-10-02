@@ -1,5 +1,6 @@
 package com.example.pierrepapierciseaux;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,7 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pierrepapierciseaux.data.Element;
 import com.example.pierrepapierciseaux.data.ElementManager;
+import com.example.pierrepapierciseaux.data.EnumGameTypes;
 import com.example.pierrepapierciseaux.data.EnumResults;
+import com.example.pierrepapierciseaux.data.ResultWrapper;
+import com.example.pierrepapierciseaux.helpers.GameHelper;
 
 public class ActivityGameVariant4Buttons extends AppCompatActivity {
 
@@ -26,13 +30,8 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
     ImageView point1Human, point2Human, point3Human;
     ImageView point1Bot, point2Bot, point3Bot;
 
-    ElementManager elementManager;
-
-    Element chosenElementBot;
+    GameHelper gameHelper;
     Element chosenElementHuman;
-
-    Integer humanScore;
-    Integer botScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_variant_4_buttons);
 
-        elementManager = new ElementManager(this.getApplicationContext());
+        gameHelper = new GameHelper(this.getApplicationContext(), EnumGameTypes.VARIANT4);
 
         choixPierre = (Button) findViewById(R.id.buttonPierreVariant4);
         choixFeuille = (Button) findViewById(R.id.buttonFeuilleVariant4);
@@ -66,71 +65,49 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
         point2Bot = (ImageView) findViewById(R.id.point2Bot);
         point3Bot = (ImageView) findViewById(R.id.point2Bot);
 
-        botScore = 0;
-        humanScore = 0;
-
-        botScoreText.setText(getString(R.string.botScore) + " " + botScore.toString());
-        humanScoreText.setText(getString(R.string.humanScore) + " " + humanScore.toString());
+        botScoreText.setText(getString(R.string.botScore) + " " + gameHelper.botScore.toString());
+        humanScoreText.setText(getString(R.string.humanScore) + " " + gameHelper.humanScore.toString());
 
         choixPierre.setOnClickListener(e -> {
-            humanChoiceImage.setImageResource(elementManager.pierre.getImageId());
-            humanChoiceText.setText(elementManager.pierre.getName());
-            chosenElementHuman = elementManager.pierre;
-            makeBotChoice();
+            choiceButtonListener(gameHelper.elementManager.pierre);
         });
 
         choixFeuille.setOnClickListener(e -> {
-            humanChoiceImage.setImageResource(elementManager.feuille.getImageId());
-            humanChoiceText.setText(elementManager.feuille.getName());
-            chosenElementHuman = elementManager.feuille;
-            makeBotChoice();
+            choiceButtonListener(gameHelper.elementManager.feuille);
         });
 
         choixCiseaux.setOnClickListener(e -> {
-            humanChoiceImage.setImageResource(elementManager.ciseaux.getImageId());
-            humanChoiceText.setText(elementManager.ciseaux.getName());
-            chosenElementHuman = elementManager.ciseaux;
-            makeBotChoice();
+            choiceButtonListener(gameHelper.elementManager.ciseaux);
         });
 
         choixPuits.setOnClickListener(e -> {
-            humanChoiceImage.setImageResource(elementManager.puits.getImageId());
-            humanChoiceText.setText(elementManager.puits.getName());
-            chosenElementHuman = elementManager.puits;
-            makeBotChoice();
+            choiceButtonListener(gameHelper.elementManager.puits);
         });
 
     }
 
-    private void makeBotChoice(){
-        chosenElementBot = elementManager.getRandomElementVariant4();
-        botChoiceImage.setImageResource(chosenElementBot.getImageId());
-        botChoiceText.setText(chosenElementBot.getName());
-        EnumResults result = chosenElementHuman.checkWeakness(chosenElementBot);
+    private void choiceButtonListener(Element element) {
+        humanChoiceImage.setImageResource(element.getImageId());
+        humanChoiceText.setText(element.getName());
+        chosenElementHuman = element;
+        makeBotChoice();
+    }
 
-        switch (result) {
-            case TIE:
-                resultRound.setText(getString(R.string.resultRound) + " " + getString(R.string.resultTie));
-                resultRound.setBackgroundColor(getColor(R.color.turquoise));
-                break;
-            case DEFEAT:
-                botScore++;
-                resultRound.setText(getString(R.string.resultRound) + " " + getString(R.string.resultDefeat));
-                resultRound.setBackgroundColor(getColor(R.color.red));
-                break;
-            case VICTORY:
-                humanScore++;
-                resultRound.setText(getString(R.string.resultRound) + " " + getString(R.string.resultVictory));
-                resultRound.setBackgroundColor(getColor(R.color.green));
-                break;
-        }
-        botScoreText.setText(getString(R.string.botScore) + " " + botScore.toString());
-        humanScoreText.setText(getString(R.string.humanScore) + " " + humanScore.toString());
+    private void makeBotChoice() {
+        ResultWrapper resultWrapper = gameHelper.makeBotChoice(chosenElementHuman);
+        botChoiceImage.setImageResource(gameHelper.chosenElementBot.getImageId());
+        botChoiceText.setText(gameHelper.chosenElementBot.getName());
+
+        resultRound.setText(resultWrapper.getTextToDisplay());
+        resultRound.setBackgroundColor(resultWrapper.getColorId());
+
+        botScoreText.setText(getString(R.string.botScore) + " " + gameHelper.botScore.toString());
+        humanScoreText.setText(getString(R.string.humanScore) + " " + gameHelper.humanScore.toString());
         checkScore();
     }
 
     private void checkScore() {
-        switch (humanScore) {
+        switch (gameHelper.humanScore) {
             case 1:
                 point1Human.setImageDrawable(getDrawable(R.drawable.dot_red));
                 break;
@@ -144,7 +121,7 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
                 break;
         }
 
-        switch (botScore) {
+        switch (gameHelper.botScore) {
             case 1:
                 point1Bot.setImageDrawable(getDrawable(R.drawable.dot_red));
                 break;
@@ -158,28 +135,20 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
                 break;
         }
 
-        if (botScore == 3) {
-            Toast.makeText(this.getApplicationContext(), "Défaite", Toast.LENGTH_LONG).show();
-            resetScore();
-        } else if (humanScore == 3) {
-            Toast.makeText(this.getApplicationContext(), "Victoire", Toast.LENGTH_LONG).show();
-            resetScore();
+        if (gameHelper.botScore == 3) {
+            endGame(false, R.string.vousAvezPerdu);
+        } else if (gameHelper.humanScore == 3) {
+            endGame(true, R.string.vousAvezGagne);
         }
     }
 
-    private void resetScore(){
-        botScore = 0;
-        humanScore = 0;
-        botScoreText.setText(getString(R.string.botScore) + " " + botScore.toString());
-        humanScoreText.setText(getString(R.string.humanScore) + " " + humanScore.toString());
-
-        point1Bot.setImageDrawable(getDrawable(R.drawable.dot_black));
-        point2Bot.setImageDrawable(getDrawable(R.drawable.dot_black));
-        point3Bot.setImageDrawable(getDrawable(R.drawable.dot_black));
-
-        point1Human.setImageDrawable(getDrawable(R.drawable.dot_black));
-        point2Human.setImageDrawable(getDrawable(R.drawable.dot_black));
-        point3Human.setImageDrawable(getDrawable(R.drawable.dot_black));
+    private void endGame(boolean hasWon, int textId) {
+        Intent endIntent = new Intent(ActivityGameVariant4Buttons.this, ActivityGameEnd.class);
+        int finalScore = gameHelper.updatePlayerScore(hasWon);
+        endIntent.putExtra("resultText", getString(textId));
+        endIntent.putExtra("finalScore", finalScore);
+        endIntent.putExtra("gameType", EnumGameTypes.VARIANT4.getValue());
+        startActivity(endIntent);
     }
 
 

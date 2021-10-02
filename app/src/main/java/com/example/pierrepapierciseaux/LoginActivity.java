@@ -119,12 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (myUser != null) {
                     Intent newIntent = new Intent(LoginActivity.this, ActivityMainMenu.class);
-                    SharedPreferences prefs = getApplicationContext ().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putString("userName", (myUser.getPrenom() + " " + myUser.getNom()));
-                    editor.putString("userID", userID);
-                    editor.putInt("userScore", myUser.getScore());
-                    editor.commit();
+                    initSession(myUser);
                     startActivity(newIntent);
                 }
             }
@@ -134,6 +129,15 @@ public class LoginActivity extends AppCompatActivity {
                 showToast(R.string.login_user_fail);
             }
         });
+    }
+
+    private void initSession(Utilisateur myUser) {
+        SharedPreferences prefs = getApplicationContext ().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("userName", (myUser.getPrenom() + " " + myUser.getNom()));
+        editor.putString("userID", userID);
+        editor.putInt("userScore", myUser.getScore());
+        editor.commit();
     }
 
     /**

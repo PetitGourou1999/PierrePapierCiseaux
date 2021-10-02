@@ -20,7 +20,6 @@ public class UtilisateurAdapter extends RecyclerView.Adapter<UtilisateurAdapter.
 
     public UtilisateurAdapter(ArrayList<Utilisateur> people) {
         mPeople = people;
-        mPeople.sort(Comparator.comparingInt(Utilisateur::getScore));
     }
 
     @NonNull

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pierre Papier Ciseaux</string>
+    <string name="app_name">Shifumi</string>
 
     <string name="connexion">Connexion</string>
     <string name="bienvenue">Bienvenue</string>
@@ -50,6 +50,12 @@
     <string name="precedent">Précédent</string>
     <string name="suivant">Suivant</string>
     <string name="termine">Terminé</string>
+
+    <string name="finPartie">Fin de la partie</string>
+    <string name="vousAvezGagne">Vous avez gagné !</string>
+    <string name="vousAvezPerdu">Vous avez perdu !</string>
+    <string name="revanche">Revanche</string>
+    <string name="retourMenu">Retour au Menu Principal</string>
 
     <string name="rules1">Une partie se joue en maximum 5 manches.</string>
     <string name="rules2">A chaque manche de la partie, vous pouvez choisir un élément

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pierrepapierciseaux.data.Utilisateur;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class ActivityMainMenu extends AppCompatActivity {
@@ -16,11 +17,15 @@ public class ActivityMainMenu extends AppCompatActivity {
     private String userName;
     private int userScore;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+
+        mAuth = FirebaseAuth.getInstance();
 
         SharedPreferences prefs = getApplicationContext ().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
         userName = prefs.getString("userName", null);
@@ -69,6 +74,7 @@ public class ActivityMainMenu extends AppCompatActivity {
             SharedPreferences.Editor editor = prefs.edit();
             editor.clear();
             editor.commit();
+            mAuth.signOut();
             startActivity(intentDeco);
         });
 

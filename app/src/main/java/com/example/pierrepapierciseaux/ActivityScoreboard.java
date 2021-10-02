@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ActivityScoreboard extends AppCompatActivity {
 
@@ -36,12 +37,6 @@ public class ActivityScoreboard extends AppCompatActivity {
 
         userlist = new ArrayList<Utilisateur>();
         loadUsers();
-
-        Log.d("LIST AFTER", userlist.toString());
-
-
-
-
     }
 
     private void loadUsers() {
@@ -56,6 +51,10 @@ public class ActivityScoreboard extends AppCompatActivity {
                         userlist.add(myUser);
                     }
                 }
+
+                userlist.sort((u1, u2) ->{
+                    return u2.getScore() - u1.getScore();
+                });
 
                 RecyclerView recyclerView = findViewById(R.id.recyclerScoreboard);
 

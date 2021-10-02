@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PierrePapierCiseaux">
         <activity
+            android:name=".ActivityGameEnd"
+            android:exported="true" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,44 +26,42 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ActivityGameClassic"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityGameVariant4"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityGameVariant7"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityGameClassicButtons"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityGameVariant4Buttons"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityGameVariant7Buttons"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityRules"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityScoreboard"
             android:exported="true"
-            android:parentActivityName=".ActivityMainMenu"/>
+            android:parentActivityName=".ActivityMainMenu" />
         <activity
             android:name=".ActivityMainMenu"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>
