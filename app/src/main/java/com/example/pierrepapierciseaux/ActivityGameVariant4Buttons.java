@@ -30,6 +30,8 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
     ImageView point1Human, point2Human, point3Human;
     ImageView point1Bot, point2Bot, point3Bot;
 
+    ImageButton buttonRules;
+
     GameHelper gameHelper;
     Element chosenElementHuman;
 
@@ -45,6 +47,7 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
         choixFeuille = (Button) findViewById(R.id.buttonFeuilleVariant4);
         choixCiseaux = (Button) findViewById(R.id.buttonCiseauxVariant4);
         choixPuits = (Button) findViewById(R.id.buttonPuitsVariant4);
+        buttonRules = (ImageButton) findViewById(R.id.imageButtonRules2);
 
         humanChoiceImage = (ImageView) findViewById(R.id.imageViewHumanChoiceVariant4);
         botChoiceImage = (ImageView) findViewById(R.id.imageViewBotChoiceVariant4);
@@ -82,6 +85,12 @@ public class ActivityGameVariant4Buttons extends AppCompatActivity {
 
         choixPuits.setOnClickListener(e -> {
             choiceButtonListener(gameHelper.elementManager.puits);
+        });
+
+        buttonRules.setOnClickListener(e->{
+            Intent intent = new Intent(this, ActivityRules.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityForResult(intent,0);
         });
 
     }

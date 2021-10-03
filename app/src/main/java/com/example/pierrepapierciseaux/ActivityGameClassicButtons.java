@@ -3,6 +3,7 @@ package com.example.pierrepapierciseaux;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ public class ActivityGameClassicButtons extends AppCompatActivity {
     Button choixPierre;
     Button choixFeuille;
     Button choixCiseaux;
+
+    ImageButton buttonRules;
 
     ImageView humanChoiceImage;
     ImageView botChoiceImage;
@@ -46,6 +49,7 @@ public class ActivityGameClassicButtons extends AppCompatActivity {
         choixPierre = (Button) findViewById(R.id.buttonPierreClassic);
         choixFeuille = (Button) findViewById(R.id.buttonFeuilleClassic);
         choixCiseaux = (Button) findViewById(R.id.buttonCiseauxClassic);
+        buttonRules = (ImageButton) findViewById(R.id.imageButtonRules);
 
         humanChoiceImage = (ImageView) findViewById(R.id.imageViewHumanChoiceClassic);
         botChoiceImage = (ImageView) findViewById(R.id.imageViewBotChoiceClassic);
@@ -80,6 +84,12 @@ public class ActivityGameClassicButtons extends AppCompatActivity {
 
         choixCiseaux.setOnClickListener(e -> {
             choiceButtonListener(gameHelper.elementManager.ciseaux);
+        });
+
+        buttonRules.setOnClickListener(e->{
+            Intent intent = new Intent(this, ActivityRules.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityForResult(intent,0);
         });
 
     }

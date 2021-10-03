@@ -3,6 +3,7 @@ package com.example.pierrepapierciseaux;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,8 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
     ImageView point1Human, point2Human, point3Human;
     ImageView point1Bot, point2Bot, point3Bot;
 
+    ImageButton buttonRules;
+
     GameHelper gameHelper;
     Element chosenElementHuman;
 
@@ -44,6 +47,7 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
         choixEau = (Button) findViewById(R.id.buttonEauVariant7);
         choixAir = (Button) findViewById(R.id.buttonAirVariant7);
         choixEponge = (Button) findViewById(R.id.buttonEpongeVariant7);
+        buttonRules = (ImageButton) findViewById(R.id.imageButtonRules3);
 
         humanChoiceImage = (ImageView) findViewById(R.id.imageViewHumanChoiceVariant7);
         botChoiceImage = (ImageView) findViewById(R.id.imageViewBotChoiceVariant7);
@@ -93,6 +97,12 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
 
         choixEponge.setOnClickListener(e -> {
             choiceButtonListener(gameHelper.elementManager.eponge);
+        });
+
+        buttonRules.setOnClickListener(e->{
+            Intent intent = new Intent(this, ActivityRules.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityForResult(intent,0);
         });
 
     }

@@ -55,13 +55,13 @@ public class ActivityRules extends AppCompatActivity {
         displayStep();
 
         precedentButton.setOnClickListener(e -> {
-            if (stepCounter >= 1)
+            if (stepCounter >= 0)
                 stepCounter--;
             displayStep();
         });
 
         suivantButton.setOnClickListener(e -> {
-            if (stepCounter <= 5)
+            if (stepCounter <= 6)
                 stepCounter++;
             displayStep();
         });
@@ -73,8 +73,11 @@ public class ActivityRules extends AppCompatActivity {
      */
     private void displayStep() {
         switch (stepCounter) {
+            case 0:
+                this.finish();
+                break;
             case 1: //Affichage règles générales
-                precedentButton.setEnabled(false);
+                precedentButton.setText(R.string.retour);
                 displayTexts(true);
                 txtRules1.setText(R.string.rules1);
                 txtRules2.setText(R.string.rules2);
@@ -84,7 +87,7 @@ public class ActivityRules extends AppCompatActivity {
                 title.setText(R.string.titleRules);
                 break;
             case 2: //Affichage règles du score
-                precedentButton.setEnabled(true);
+                precedentButton.setText(R.string.precedent);
                 suivantButton.setText(R.string.suivant);
                 displayTexts(true);
                 txtRules1.setText(R.string.rulesScore1);
@@ -95,28 +98,28 @@ public class ActivityRules extends AppCompatActivity {
                 title.setText(R.string.titleRulesScore);
                 break;
             case 3: //Affichage règles jeu à 3
-                precedentButton.setEnabled(true);
+                precedentButton.setText(R.string.precedent);
                 title.setText(R.string.titleRulesClassique);
                 suivantButton.setText(R.string.suivant);
                 displayTexts(false);
                 //TODO : afficher image règles à 3
                 break;
             case 4: //Affichage règles jeu à 4
-                precedentButton.setEnabled(true);
+                precedentButton.setText(R.string.precedent);
                 title.setText(R.string.titleRules4);
                 suivantButton.setText(R.string.suivant);
                 displayTexts(false);
                 //TODO : afficher image règles à 4
                 break;
             case 5: //Affichage règles jeu à 7
-                precedentButton.setEnabled(true);
+                precedentButton.setText(R.string.precedent);
                 title.setText(R.string.titleRules7);
                 displayTexts(false);
                 //TODO : afficher image règles à 7
                 suivantButton.setText(R.string.termine);
                 break;
             case 6:
-                //TODO : rediriger vers la vue de laquelle on vient
+                this.finish();
                 break;
         }
     }
