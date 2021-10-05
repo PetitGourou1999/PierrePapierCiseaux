@@ -102,20 +102,20 @@ public class ActivityRules extends AppCompatActivity {
                 title.setText(R.string.titleRulesClassique);
                 suivantButton.setText(R.string.suivant);
                 displayTexts(false);
-                //TODO : afficher image règles à 3
+                imageViewRules.setImageDrawable(getDrawable(R.drawable.rules_3));
                 break;
             case 4: //Affichage règles jeu à 4
                 precedentButton.setText(R.string.precedent);
                 title.setText(R.string.titleRules4);
                 suivantButton.setText(R.string.suivant);
                 displayTexts(false);
-                //TODO : afficher image règles à 4
+                imageViewRules.setImageDrawable(getDrawable(R.drawable.rules_4));
                 break;
             case 5: //Affichage règles jeu à 7
                 precedentButton.setText(R.string.precedent);
                 title.setText(R.string.titleRules7);
                 displayTexts(false);
-                //TODO : afficher image règles à 7
+                imageViewRules.setImageDrawable(getDrawable(R.drawable.rules_7));
                 suivantButton.setText(R.string.termine);
                 break;
             case 6:
