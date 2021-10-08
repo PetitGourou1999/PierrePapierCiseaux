@@ -61,7 +61,8 @@ public class ElementManager {
     private Element getRandomElement(ArrayList<Element> elements){
 
         Random rand = new Random();
-        Element randomElement = elements.get(rand.nextInt(elements.size()));
+        int trueRand = rand.nextInt(elements.size()*10);
+        Element randomElement = elements.get(Math.round(trueRand/10));
         return randomElement;
     }
 
