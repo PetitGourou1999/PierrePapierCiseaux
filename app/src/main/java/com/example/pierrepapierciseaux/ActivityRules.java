@@ -1,5 +1,6 @@
 package com.example.pierrepapierciseaux;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,7 @@ public class ActivityRules extends AppCompatActivity {
 
     /*Métier*/
     private int stepCounter = 1;
+    private boolean fromInscription = false;
 
     /**
      * Récupération des UI
@@ -49,6 +51,11 @@ public class ActivityRules extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_rules);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            fromInscription = extras.getBoolean("fromInscription");
+        }
 
         getElements();
 
@@ -74,7 +81,12 @@ public class ActivityRules extends AppCompatActivity {
     private void displayStep() {
         switch (stepCounter) {
             case 0:
-                this.finish();
+            case 6:
+                if (fromInscription) {
+                    startActivity(new Intent(this, LoginActivity.class));
+                } else {
+                    this.finish();
+                }
                 break;
             case 1: //Affichage règles générales
                 precedentButton.setText(R.string.retour);
@@ -117,9 +129,6 @@ public class ActivityRules extends AppCompatActivity {
                 displayTexts(false);
                 imageViewRules.setImageDrawable(getDrawable(R.drawable.rules_7));
                 suivantButton.setText(R.string.termine);
-                break;
-            case 6:
-                this.finish();
                 break;
         }
     }

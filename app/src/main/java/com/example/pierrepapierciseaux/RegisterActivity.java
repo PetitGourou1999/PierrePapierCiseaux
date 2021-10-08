@@ -188,7 +188,9 @@ public class RegisterActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 showToast(R.string.ajout_user_reussi);
                                 dialog.dismiss();
-                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                Intent i = new Intent(RegisterActivity.this, ActivityRules.class);
+                                i.putExtra("fromInscription", true);
+                                startActivity(i);
                             } else {
                                 showToast(R.string.ajout_user_fail);
                                 dialog.dismiss();
