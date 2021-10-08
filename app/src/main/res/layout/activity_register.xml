@@ -154,10 +154,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/select_date"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline10"
                 app:layout_constraintEnd_toStartOf="@+id/selectDateButton"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
             <ImageButton
                 android:id="@+id/selectDateButton"
