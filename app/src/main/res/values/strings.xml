@@ -85,10 +85,13 @@
     <string name="resultVictory">Victoire !</string>
     <string name="resultDefeat">Défaite !</string>
     <string name="resultRound">Résultat de la manche :</string>
+    <string name="startResultText">A vous de jouer !</string>
 
     <string name="generalScore">Score total : </string>
     <string name="botScore">Ordinateur : </string>
     <string name="humanScore">Joueur : </string>
+
+
 
 
 </resources>
