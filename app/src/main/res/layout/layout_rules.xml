@@ -6,16 +6,93 @@
     android:layout_height="match_parent"
     android:background="@color/yellow">
 
-    <TextView
-        android:id="@+id/textViewRules5"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRules4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textViewRules1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules1"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewRules2"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRules2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textViewRules2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewRules2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rules2"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewRules3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRules1" />
+
+            <TextView
+                android:id="@+id/textViewRules3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules3"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewRules4"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRules2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textViewRules2"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRules2" />
+
+            <TextView
+                android:id="@+id/textViewRules4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rules4"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/textViewRules5"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRules3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textViewRules3"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRules3" />
+
+            <TextView
+                android:id="@+id/textViewRules5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textViewRules4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/textViewRules4"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRules4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageViewRules"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
+        app:layout_constraintEnd_toStartOf="@+id/guideline19"
+        app:layout_constraintStart_toEndOf="@+id/guideline18"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2"
+        app:srcCompat="@drawable/rules_3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -29,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.82" />
 
     <TextView
         android:id="@+id/titleRules"
@@ -78,65 +155,5 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94" />
-
-    <TextView
-        android:id="@+id/textViewRules1"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
-        android:text="@string/rules1"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewRules2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
-
-    <TextView
-        android:id="@+id/textViewRules2"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
-        android:text="@string/rules2"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewRules3"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRules1" />
-
-    <TextView
-        android:id="@+id/textViewRules3"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
-        android:text="@string/rules3"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageViewRules"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRules2" />
-
-    <TextView
-        android:id="@+id/textViewRules4"
-        android:layout_width="362dp"
-        android:layout_height="wrap_content"
-        android:text="@string/rules4"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewRules5"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewRules" />
-
-    <ImageView
-        android:id="@+id/imageViewRules"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/textViewRules4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline19"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRules3"
-        app:srcCompat="@drawable/rules_3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

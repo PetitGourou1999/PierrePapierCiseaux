@@ -55,6 +55,8 @@ public class ActivityRules extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             fromInscription = extras.getBoolean("fromInscription");
+        } else {
+            fromInscription = false;
         }
 
         getElements();

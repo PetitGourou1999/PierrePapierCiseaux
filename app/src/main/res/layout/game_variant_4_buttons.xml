@@ -152,14 +152,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline23"
@@ -173,6 +173,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/turquoise"
+        android:gravity="center"
         android:text="@string/startResultText"
         android:textAlignment="center"
         android:textColor="#FFFFFF"

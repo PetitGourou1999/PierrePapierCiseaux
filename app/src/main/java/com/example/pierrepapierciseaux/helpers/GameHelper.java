@@ -46,7 +46,18 @@ public class GameHelper {
     }
 
     public ResultWrapper makeBotChoice(Element chosenElementHuman) {
-        chosenElementBot = elementManager.getRandomElementClassic();
+        switch (this.gameType){
+            case CLASSIC:
+                chosenElementBot = elementManager.getRandomElementClassic();
+                break;
+            case VARIANT4:
+                chosenElementBot = elementManager.getRandomElementVariant4();
+                break;
+            case VARIANT7:
+                chosenElementBot = elementManager.getRandomElementVariant7();
+                break;
+        }
+
         EnumResults result = chosenElementHuman.checkWeakness(chosenElementBot);
 
         switch (result) {
