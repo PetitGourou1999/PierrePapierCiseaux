@@ -2,6 +2,9 @@ package com.example.pierrepapierciseaux.data;
 
 import java.io.Serializable;
 
+/**
+ * Classe représentant un utilisateur de l'application
+ */
 public class Utilisateur implements Serializable, Comparable<Utilisateur> {
 
     private String nom;
@@ -11,10 +14,22 @@ public class Utilisateur implements Serializable, Comparable<Utilisateur> {
     private String mail;
     private int score;
 
+    /**
+     * Constructeur vide pour Firebase
+     */
     public Utilisateur() {
 
     }
 
+    /**
+     * Constructeur
+     * @param nom le nom de l'utilisateur
+     * @param prenom le prénom de l'utilisateur
+     * @param dateNaiss la date de naissance de l'utilisateur
+     * @param sexe le sexe de l'utilisateur
+     * @param mail le mail de l'utilisateur
+     * @param score le socre de l'utilisateur (de base à 0)
+     */
     public Utilisateur(String nom, String prenom, String dateNaiss, String sexe, String mail, int score) {
         this.nom = nom;
         this.prenom = prenom;

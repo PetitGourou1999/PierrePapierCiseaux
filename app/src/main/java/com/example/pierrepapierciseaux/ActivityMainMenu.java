@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityMainMenu extends AppCompatActivity {
 
+    /*Métier*/
     private String userName;
     private int userScore;
 
@@ -27,7 +28,7 @@ public class ActivityMainMenu extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        SharedPreferences prefs = getApplicationContext ().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
         userName = prefs.getString("userName", null);
         userScore = prefs.getInt("userScore", 0);
 
@@ -42,19 +43,16 @@ public class ActivityMainMenu extends AppCompatActivity {
         TextView scoreText = (TextView) findViewById(R.id.textViewScore);
 
         buttonGameClassique.setOnClickListener(e -> {
-            //Intent intentGameClassic = new Intent(this, ActivityGameClassic.class);
             Intent intentGameClassic = new Intent(this, ActivityGameClassicButtons.class);
             startActivity(intentGameClassic);
         });
 
         buttonGameVariant4.setOnClickListener(e -> {
-            //Intent intentGameVariant4 = new Intent(this, ActivityGameVariant4.class);
             Intent intentGameVariant4 = new Intent(this, ActivityGameVariant4Buttons.class);
             startActivity(intentGameVariant4);
         });
 
         buttonGameVariant7.setOnClickListener(e -> {
-            //Intent intentGameVariant7 = new Intent(this, ActivityGameVariant7.class);
             Intent intentGameVariant7 = new Intent(this, ActivityGameVariant7Buttons.class);
             startActivity(intentGameVariant7);
         });
@@ -78,7 +76,7 @@ public class ActivityMainMenu extends AppCompatActivity {
             startActivity(intentDeco);
         });
 
-        if(userName !=null){
+        if (userName != null) {
             usernameText.setText(getString(R.string.humanScore) + " " + userName);
             scoreText.setText(getString(R.string.generalScore) + " " + userScore);
         }

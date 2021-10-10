@@ -26,6 +26,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Activité d'inscription
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     /*Firebase*/

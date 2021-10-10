@@ -1,5 +1,8 @@
 package com.example.pierrepapierciseaux.data;
 
+/**
+ * Enumération des types de jeu
+ */
 public enum EnumGameTypes {
     CLASSIC("Classic"),VARIANT4("Variant4"),VARIANT7("Variant7");
 

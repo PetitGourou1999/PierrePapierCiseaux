@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Activité affichée à la fin d'une partie
+ */
 public class ActivityGameEnd extends AppCompatActivity {
 
     private Button revanche;
@@ -19,6 +22,9 @@ public class ActivityGameEnd extends AppCompatActivity {
     private int extraScore;
     private String extraType;
 
+    /**
+     * Récupération des éléments de l'UI
+     */
     private void getUIElements() {
         resultText = findViewById(R.id.textViewResultEnd);
         scoreText = findViewById(R.id.textViewScoreEnd);

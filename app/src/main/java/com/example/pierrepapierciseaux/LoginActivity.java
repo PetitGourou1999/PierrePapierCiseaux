@@ -24,6 +24,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Activité de connexion de l'utilisateur
+ */
 public class LoginActivity extends AppCompatActivity {
 
     /*UI*/
@@ -107,6 +110,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Connexion Firebase et redirection vers le menu principal
+     */
     private void singInAndRedirect() {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
@@ -131,8 +137,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Mise en session des parmètres de l'utilisateur
+     *
+     * @param myUser l'utilisateur qui vient de se connecter
+     */
     private void initSession(Utilisateur myUser) {
-        SharedPreferences prefs = getApplicationContext ().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("preferences-key-name", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("userName", (myUser.getPrenom() + " " + myUser.getNom()));
         editor.putString("userID", userID);

@@ -20,6 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Activité avec le classement des joueurs
+ */
 public class ActivityScoreboard extends AppCompatActivity {
 
     private DatabaseReference databaseReference;
@@ -39,6 +42,9 @@ public class ActivityScoreboard extends AppCompatActivity {
         loadUsers();
     }
 
+    /**
+     * Chargement de la liste des données depuis Firebase
+     */
     private void loadUsers() {
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

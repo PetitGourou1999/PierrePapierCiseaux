@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,14 +31,10 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
     GameHelper gameHelper;
     Element chosenElementHuman;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_variant_7_buttons);
-
-        gameHelper = new GameHelper(this.getApplicationContext(), EnumGameTypes.VARIANT7);
-
+    /**
+     * Récupération des éléments de l'UI
+     */
+    private void getUIElements() {
         choixPierre = (Button) findViewById(R.id.buttonPierreVariant7);
         choixFeuille = (Button) findViewById(R.id.buttonFeuilleVariant7);
         choixCiseaux = (Button) findViewById(R.id.buttonCiseauxVariant7);
@@ -67,6 +62,17 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
         point1Bot = (ImageView) findViewById(R.id.point1Bot);
         point2Bot = (ImageView) findViewById(R.id.point2Bot);
         point3Bot = (ImageView) findViewById(R.id.point2Bot);
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.game_variant_7_buttons);
+
+        gameHelper = new GameHelper(this.getApplicationContext(), EnumGameTypes.VARIANT7);
+
+        getUIElements();
 
         botScoreText.setText(getString(R.string.botScore) + " " + gameHelper.botScore.toString());
         humanScoreText.setText(getString(R.string.humanScore) + " " + gameHelper.humanScore.toString());
@@ -107,6 +113,11 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
 
     }
 
+    /**
+     * Méthode appelée au clic sur un des boutons qui représentent les éléments
+     *
+     * @param element l'élément représenté par le bouton sur lequel ke joueur a cliqué
+     */
     private void choiceButtonListener(Element element) {
         humanChoiceImage.setImageResource(element.getImageId());
         humanChoiceText.setText(element.getName());
@@ -114,6 +125,9 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
         makeBotChoice();
     }
 
+    /**
+     * Réalisation du choix de l'IA
+     */
     private void makeBotChoice() {
         ResultWrapper resultWrapper = gameHelper.makeBotChoice(chosenElementHuman);
         botChoiceImage.setImageResource(gameHelper.chosenElementBot.getImageId());
@@ -127,6 +141,9 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
         checkScore();
     }
 
+    /**
+     * Vérification du score et affichage des manches remportées par chacun
+     */
     private void checkScore() {
         switch (gameHelper.humanScore) {
             case 1:
@@ -163,6 +180,12 @@ public class ActivityGameVariant7Buttons extends AppCompatActivity {
         }
     }
 
+    /**
+     * Gestion de fin de partie : redirectiopn vers l'activité correspondante
+     *
+     * @param hasWon booléen pour savoir si le joueur a gagné
+     * @param textId l'id du texte à afficher sur cette nouvelle page
+     */
     private void endGame(boolean hasWon, int textId) {
         Intent endIntent = new Intent(ActivityGameVariant7Buttons.this, ActivityGameEnd.class);
         int finalScore = gameHelper.updatePlayerScore(hasWon);

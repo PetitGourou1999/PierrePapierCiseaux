@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Activité où sont affichées les règles du jeu
+ */
 public class ActivityRules extends AppCompatActivity {
 
     /*UI*/

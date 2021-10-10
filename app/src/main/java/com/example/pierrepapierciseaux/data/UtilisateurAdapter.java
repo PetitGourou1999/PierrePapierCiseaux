@@ -12,12 +12,20 @@ import com.example.pierrepapierciseaux.R;
 
 import java.util.ArrayList;
 
+/**
+ * Adatpeur pour RecyclerView
+ */
 public class UtilisateurAdapter extends RecyclerView.Adapter<UtilisateurAdapter.ViewHolder> {
 
     private ArrayList<Utilisateur> mPeople;
     private ArrayList<UtilisateurRanked> mPeopleRanked;
 
 
+    /**
+     * Constructeur
+     *
+     * @param people une liste d'utilisateurs
+     */
     public UtilisateurAdapter(ArrayList<Utilisateur> people) {
         mPeople = people;
         mPeopleRanked = new ArrayList<UtilisateurRanked>();
@@ -26,6 +34,9 @@ public class UtilisateurAdapter extends RecyclerView.Adapter<UtilisateurAdapter.
 
     }
 
+    /**
+     * Construction de la liste des utilisateurs dans le bon ordre avec gestion du rang affiché
+     */
     private void checkUserPosition() {
         int previousScore = 0;
         int rank = 1;
@@ -81,6 +92,10 @@ public class UtilisateurAdapter extends RecyclerView.Adapter<UtilisateurAdapter.
         public TextView nameField;
         public TextView scoreField;
 
+        /**
+         * Constructeur
+         * @param view la vue
+         */
         public ViewHolder(View view) {
             super(view);
             rankField = (TextView) view.findViewById(R.id.textViewRankScoreboard);

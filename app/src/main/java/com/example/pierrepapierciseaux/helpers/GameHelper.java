@@ -4,9 +4,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 import com.example.pierrepapierciseaux.R;
 import com.example.pierrepapierciseaux.data.Element;
@@ -14,17 +11,10 @@ import com.example.pierrepapierciseaux.data.ElementManager;
 import com.example.pierrepapierciseaux.data.EnumGameTypes;
 import com.example.pierrepapierciseaux.data.EnumResults;
 import com.example.pierrepapierciseaux.data.ResultWrapper;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Classe helper pour la gestion du jeu côté "métier"
+ */
 public class GameHelper {
 
     private Context appContext;
@@ -37,6 +27,12 @@ public class GameHelper {
 
     public ElementManager elementManager;
 
+    /**
+     * Constructeur
+     *
+     * @param appContext contexte de l'application
+     * @param gameType   type de jeu (classique, puissance 4, puissance 7)
+     */
     public GameHelper(Context appContext, EnumGameTypes gameType) {
         this.appContext = appContext;
         this.gameType = gameType;
@@ -45,8 +41,15 @@ public class GameHelper {
         elementManager = new ElementManager(this.appContext);
     }
 
+    /**
+     * Méthode pour choisir un élément en hasard dans la liste et gérer le résulat de la
+     * manche par rapport à l'élément choisi par le joueur
+     *
+     * @param chosenElementHuman l'élément choisi par le joueur
+     * @return le résutat de la manche
+     */
     public ResultWrapper makeBotChoice(Element chosenElementHuman) {
-        switch (this.gameType){
+        switch (this.gameType) {
             case CLASSIC:
                 chosenElementBot = elementManager.getRandomElementClassic();
                 break;
@@ -82,6 +85,11 @@ public class GameHelper {
                 appContext.getColor(R.color.turquoise));
     }
 
+    /**
+     * Mise à jour du socre de l'utilisateur en focntion du résultat de la partie et du type de jeu
+     * @param hasWon booléen pour savoir si le joueur a gagné ou non
+     * @return le npouveau score du joueur
+     */
     public int updatePlayerScore(boolean hasWon) {
         SharedPreferences prefs = appContext.getSharedPreferences("preferences-key-name", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -123,32 +131,12 @@ public class GameHelper {
         return userScore;
     }
 
+    /**
+     * Update du score sur Firebase
+     * @param userScore le nouveau score de l'utilisateur
+     */
     private void updateFirebase(int userScore) {
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users");
-
-        if (firebaseUser != null) {
-            String userID = firebaseUser.getUid();
-            int finalUserScore = userScore;
-            databaseReference.child(userID).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Map<String, Object> map = new HashMap<String, Object>();
-                    map.put("score", finalUserScore);
-                    if (snapshot.exists()) {
-                        databaseReference.child(userID).updateChildren(map);
-                    } else {
-                        databaseReference.child(userID).setValue(map);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(appContext, appContext.getString(R.string.ajout_user_fail),
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+        FirebaseHelper.updateFirebase(appContext, userScore);
     }
 
 }
